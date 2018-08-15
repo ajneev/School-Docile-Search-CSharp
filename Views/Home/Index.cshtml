@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SchoolsDocile.SchoolsDecile>
+
+@{
+    ViewBag.Title = "School Dociles List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>School Dociles List</title>
+    <script src="~/JS/function.js"></script>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <input id="MySearch" type="text" value="" style="width:500px" onkeyup="MySearchSchools()" placeholder="Search for names.." />
+    <table class="table" id="MyTable">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.school_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rate)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.school_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
